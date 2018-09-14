@@ -1,0 +1,25 @@
+<div class="container text-center ">
+  <!-- ngif condition checking all books length greater than zero than jump to next-->
+  <div class="row" *ngIf="allBooks.length>0">
+    <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6" *ngFor="let book of allBooks">
+      <!--card showing books -->
+      <div class="card">
+        <!--Front image of card-->
+        <img class="card-img-top img-fluid" src="assets/images/book.jpg">
+        <!--card body-->
+        <div class="card-body">
+          <h2 class="card-title" style="font-family: cursive">{{book.name | uppercase}}</h2>
+
+          <h4 class="card-text"> {{book.authors}}</h4>
+          <!--link that on clicking goes to bookview page-->
+          <a [routerLink]="['/bookview' , book.url]" class="btn btn-danger">More Details..</a>
+        </div>
+        <!--card body ends here-->
+      </div>
+      <!--card ends here-->
+    </div>
+    <!--col ends her-->
+  </div>
+  <!--row ends here-->
+</div>
+<!--container ends here-->

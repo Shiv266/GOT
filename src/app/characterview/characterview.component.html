@@ -1,0 +1,94 @@
+<!--container-->
+<div class="container-fluid text-center " style="background-color:rgb(31, 74, 155)">
+  <div class="row" *ngIf="currentCharacter">
+    <div class="col-md-12">
+      <!--Displaying character name-->
+      <h1>
+        <strong>{{ currentCharacter.name || currentCharacter.aliases}}</strong>
+      </h1>
+      <!--image -->
+      <img class="imag" src="assets/images/character.jpg">
+      <div class="panel-group" style="margin:0 auto" id="accordion">
+        <!--1st panel-->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                INFORMATION</a>
+            </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <p *ngIf="currentCharacter.name">Name:
+                <span>{{currentCharacter.name}}</span>
+              </p>
+              <p *ngIf="currentCharacter.gender">Gender:
+                <span>{{currentCharacter.gender}}</span>
+              </p>
+              <p *ngIf="currentCharacter.culture">Culture:
+                <span>{{currentCharacter.culture}}</span>
+              </p>
+              <p *ngIf="currentCharacter.born">Born:
+                <span>{{currentCharacter.born}}</span>
+              </p>
+              <p *ngIf="currentCharacter.died">Died:
+                <span>{{currentCharacter.died}}</span>
+              </p>
+              <p *ngIf="currentCharacter.title">Title:
+                <span>
+                  {{currentCharacter.title}}</span>
+            </div>
+          </div>
+        </div>
+        <!--1st panel ends here-->
+
+        <!--2nd panel-->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                BOOKS</a>
+            </h4>
+          </div>
+
+          <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">
+              <p>Books :</p>
+              <div *ngFor="let book of currentCharacter.books">
+                <a [routerLink]="['/books',getId(book)]" class="btn btn-link">{{book}}</a>
+              </div>
+
+              <p *ngIf="currentCharacter.povBooks != ''">POV Books:</p>
+              <div *ngFor="let book of currentCharacter.povBooks">
+                <a [routerLink]="['/books',getId(book)]" class="btn btn-link">{{book}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--2nd panel ends here-->
+
+        <!--3rd panel-->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                TV-SERIES</a>
+            </h4>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body">
+              <p *ngIf="currentCharacter.tvSeries != ''">TV-SERIES:
+                <strong>
+                  <h5 *ngFor='let name of currentCharacter.tvSeries'>{{ name }}</h5>
+                </strong>
+                <h3 *ngFor='let person of currentCharacter.playedBy; let first=first; let last=last'>Played By: {{ person }} {{last ? '':', '}}</h3>
+            </div>
+          </div>
+        </div>
+        <!--3rd panel end here-->
+        <br>
+        <!--Go back button-->
+        <button type="button" class="btn btn-success btn-md" [routerLink]="['/character']">Go Back</button>
+      </div>
+    </div>
+  </div>

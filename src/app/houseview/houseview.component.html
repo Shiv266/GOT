@@ -1,0 +1,100 @@
+<!--container-->
+<div class="container-fluid text-center " style="background-color:rgb(70, 172, 49)">
+    <div class="row" *ngIf="currentHouse">
+        <div class="col-md-12">
+            <!--Displaying house name-->
+            <h1>
+                <strong>{{ currentHouse.name}}</strong>
+            </h1>
+            <!--image -->
+            <img class="imag" src="assets/images/houses.jpg">
+            <div class="panel-group" style="margin:0 auto" id="accordion">
+                <!--1st panel-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                                INFORMATION</a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <h2>{{currentHouse.name | uppercase }}</h2>
+                            <p> Region : {{currentHouse.region}}</p>
+                            <p> Coat Of Arms : {{currentHouse.coatOfArms}}</p>
+                            <p> Words: {{currentHouse.words}}</p>
+                            <p *ngFor="let seat of currentHouse.seats;let first=first;let last=last">Seats : {{seat?seat:'Not Available'}}{{last ? '' : ', '}}</p>
+                            <p> Founded : {{currentHouse.founded}}</p>
+                            <p> Died Out : {{currentHouse.diedOut?diedOut : 'Not Available'}}</p>
+                        </div>
+                    </div>
+                </div>
+                <!--1st panel ends here-->
+
+                <!--2nd panel-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                                HISTORY</a>
+                        </h4>
+                    </div>
+
+                    <div id="collapse2" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <p *ngIf="currentHouse.currentLord ">Current Lord:
+                                <span>
+                                    <a [routerLink]="['/characters',getId(currentHouse.currentLord)]" class="btn btn-link">Character ID:{{getId(currentHouse.currentLord)}}</a>
+                                </span>
+                            </p>
+                            <p *ngIf="currentHouse.heir ">Heir:
+                                <span>
+                                    <a [routerLink]="['/characters',getId(currentHouse.heir)]" class="btn btn-link">Character ID:{{getId(currentHouse.heir)}}</a>
+                                </span>
+                            </p>
+                            <p *ngIf="currentHouse.overlord ">OverLord:
+                                <span>
+                                    <a [routerLink]="['/houses',getId(currentHouse.overlord)]" class="btn btn-link">House ID:{{getId(currentHouse.overlord)}}</a>
+                                </span>
+                            </p>
+                            <p *ngIf="currentHouse.founded != ''">Founded:
+                                <span> {{currentHouse.founded}}</span>
+                            </p>
+                            <p *ngIf="currentHouse.founder ">Founder:
+                                <span>
+                                    <a [routerLink]="['/characters',getId(currentHouse.founder)]" class="btn btn-link">Character ID:{{getId(currentHouse.founder)}}</a>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--2nd panel ends here-->
+
+                <!--3rd panel-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                                swornMembers</a>
+                        </h4>
+                    </div>
+                    
+
+                    <div id="collapse3" class="panel-collapse collapse">
+                            
+                        <div class="panel-body">
+                            <div *ngFor="let member of currentHouse.swornMembers">
+                 <a [routerLink]="['/characters',getId(member)]" class="btn btn-link">{{member}}</a>
+                            </div>
+
+                        </div>
+                    </div>
+             
+                </div>
+                <!--3rd panel end here-->
+                <br>
+                <!--Go back button-->
+                <button type="button" class="btn btn-warning btn-md" [routerLink]="['/house']">Go Back</button>
+            </div>
+        </div>
+    </div>

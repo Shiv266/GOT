@@ -1,0 +1,20 @@
+/* card styling*/
+.card{
+    color:red; 
+    margin:2rem;
+    padding:3rem; 
+    border-color:black;
+    box-shadow: 10px 10px 5px gray;
+ }
+  /* image on card styling*/
+ img{
+    height: auto;
+    width: 70%;
+    align-items: center;
+    text-shadow:2px 2px 8px #111;
+    border: 5px black solid;
+ }
+ /*hover effect when cursor comes on card*/
+ .card:hover{
+    box-shadow:-1px 20px 60px -12px rgb(5, 100, 241);
+ }

@@ -1,0 +1,97 @@
+
+<div class="container-fluid text-center " style="background-color: rgb(156, 4, 4)">
+  <div class="row" *ngIf="currentBook">
+    <div class="col-md-12">
+      <!--Displaying book name-->
+      <h1>
+        <strong style="color: black">{{currentBook.name}}</strong>
+      </h1>
+      <!--image -->
+      <img class="imag" src="assets/images/book.jpg">
+   
+  
+      <div class="panel-group" style="margin:0 auto" id="accordion">
+        <!--1st panel-->
+        
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                INFORMATION</a>
+            </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
+            <div class="panel-body">
+                
+              <h2>Book Name:
+                <strong>{{currentBook.name}}</strong>
+              </h2>
+              <h3>Book Author:
+                <strong>{{currentBook.authors}}</strong>
+              </h3>
+              <h3>Released On:
+                <strong> {{ currentBook.released }} </strong>
+              </h3>
+              <h3>Country:
+                <strong>{{ currentBook.country }}</strong>
+              </h3>
+              <h3>ISBN:
+                <strong>{{ currentBook.isbn }}</strong>
+              </h3>
+              <h3>Number Of Pages:
+                <strong>{{ currentBook.numberOfPages }}</strong>
+              </h3>
+              <h3>Publishing House:
+                <strong>{{ currentBook.publisher }}</strong>
+              </h3>
+            </div>
+          </div>
+        </div>
+        <!--1st panel ends here-->
+
+        <!--2nd panel-->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                CHARACTERS</a>
+            </h4>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">
+              <!--taking characters link from Api-->
+              <div *ngFor="let character of currentBook.characters">
+                <a [routerLink]="['/character',getId(character)]" class="btn btn-link">{{character}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--2nd panel ends here-->
+
+        <!--3rd panel-->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                povCharacters</a>
+            </h4>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body">
+              <!--Taking povcharacters from api-->
+              <div *ngFor="let character of currentBook.povCharacters">
+                <a [routerLink]="['/characters',getId(character)]" class="btn btn-link">{{character}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        
+        <!--3rd panel end here-->
+        
+        <!--Go back button-->
+        <button type="button" class="btn btn-warning btn-md" [routerLink]="['/book']">Go Back</button>
+      </div>
+      </div>
+  </div>
+  <!--container ends here-->

@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <!--Nvabar contains logo-->
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <div class="navbar-brand" href="#">
+              <img width="130px" src="assets\images\logo1.jpg">
+            </div>
+
+          </div>
+        </div>
+      </nav>
+
+    </div>
+    <!--col end here-->
+  </div>
+  <!--row end here-->
+</div>
+<!--container-fluid ends here-->
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <!--navbar-->
+      <nav class="navbar navbar-inverse" style="margin-left: 50px">
+        <div class="container" style="text-align: center">
+          <ul class="nav navbar-nav">
+            <li>
+              <a [routerLink]="['/home']">ALL</a>
+            </li>
+            <li>
+              <a [routerLink]="['/book']">BOOKS</a>
+            </li>
+            <li>
+              <a [routerLink]="['/character']">CHARACTERS</a>
+            </li>
+            <li>
+              <a [routerLink]="['/house']">HOUSES</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

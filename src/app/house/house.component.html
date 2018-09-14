@@ -1,0 +1,24 @@
+<div class="container text-center">
+    <!-- ngif condition checking all house length greater than zero than jump to next-->
+    <div class="row" *ngIf="allHouses.length>0">
+        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6" *ngFor="let house of allHouses">
+            <!--card showing houses -->
+            <div class="card ">
+                <!--Front image of card-->
+                <img class="card-img-top img-fluid" src="assets/images/houses.jpg">
+                <!--card body-->
+                <div class="card-body">
+                    <h5 class="card-title" style="font-family: cursive">{{house.name | uppercase}}</h5>
+                    <p class="card-text">Region : {{house.region}}</p>
+                    <!--link that on clicking goes to houseview page-->
+                    <a [routerLink]="['/houseview', house.url]" class="btn btn-success">More Details...</a>
+                </div>
+                <!--card body ends here-->
+            </div>
+            <!--card ends here-->
+        </div>
+        <!--col ends her-->
+    </div>
+    <!--row ends here-->
+</div>
+<!--container ends here-->

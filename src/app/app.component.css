@@ -1,0 +1,14 @@
+.headerr{
+    display: block;
+    padding: 1%;
+    background-color:gray;
+    color: black;
+    font-size: 26px;
+    font-family:cursive;
+}
+.logo{
+    font-size: 40px;
+	font-weight: 900;
+    text-shadow:2px 2px 8px #111;
+    color: #111;
+}

@@ -1,0 +1,28 @@
+<div class="container text-center">
+    <!-- ngif condition checking all character length greater than zero than jump to next-->
+    <div class="row" *ngIf="allCharacters.length>0">
+
+        <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6" *ngFor="let character of allCharacters">
+            <!--card showing characters -->
+            <div class="card">
+                <!--Front image of card-->
+                <img class="card-img-top img-fluid" src="assets/images/character.jpg">
+                <!--card body-->
+                <div class="card-body">
+                    <h5 class="card-title" *ngIf="character.name" style="color: black">{{character.name | uppercase}}</h5>
+                    <p class="card-text" style="color: black">Gender : {{character.gender}}</p>
+                    <!--link that on clicking goes to characterview page-->
+                    <a [routerLink]="['/characterview', character.url]" class="btn btn-info">
+                        <p style="color: black"> More Details..</p>
+                    </a>
+
+                </div>
+                <!--card body ends here-->
+            </div>
+            <!--card ends here-->
+        </div>
+        <!--col ends her-->
+    </div>
+    <!--row ends here-->
+</div>
+<!--container ends here-->
